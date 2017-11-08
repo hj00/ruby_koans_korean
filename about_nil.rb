@@ -2,7 +2,7 @@ require File.expand_path(File.dirname(__FILE__) + '/neo')
 
 class AboutNil < Neo::Koan
   def test_nil_is_an_object #nil조차 객체라니
-    assert_equal __, nil.is_a?(Object), "Unlike NULL in other languages"
+    assert_equal true, nil.is_a?(Object), "Unlike NULL in other languages"
   end
 
   def test_you_dont_get_null_pointer_errors_when_calling_methods_on_nil
@@ -12,18 +12,18 @@ class AboutNil < Neo::Koan
       nil.some_method_nil_doesnt_know_about
     rescue Exception => ex
       # 어떤 예외가 나왔나요?
-      assert_equal __, ex.class
+      assert_equal NoMethodError, ex.class
 
       # 예외에 어떤 메세지가 출력되었나요?
       # (HINT: __ 빈칸에 출력된 메세지를 넣어주세요)
-      assert_match(/__/, ex.message)
+      assert_match(/undefined method/, ex.message)
     end
   end
 
   def test_nil_has_a_few_methods_defined_on_it
-    assert_equal __, nil.nil?
-    assert_equal __, nil.to_s
-    assert_equal __, nil.inspect
+    assert_equal true, nil.nil?
+    assert_equal "", nil.to_s
+    assert_equal "nil", nil.inspect
 
     # 한번더 생각해봐요:
     #
